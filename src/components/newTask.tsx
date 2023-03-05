@@ -1,7 +1,7 @@
-import styles from './task.module.css';
+import styles from './newTask.module.css';
 import { PlusCircle } from 'phosphor-react';
 
-export function Task() {
+export function NewTask() {
   return (
     <div className={ styles.task }>
       <form className={ styles.taskForm }>
