@@ -19,11 +19,13 @@
 .wrapper > button[type="button"] {
   width: 1.5rem;
   height: 1.5rem;
+
   cursor: pointer;
   outline: none;
+  line-height: 0;
 
   border-radius: 50%;
-  transition: all 0.2s;
+  transition: all 0.1s;
 } 
 
 .wrapper > button[type="button"] > span {
@@ -61,6 +63,29 @@
 
   display: flex;
   align-items: flex-start;
+}
 
+.taskInProgress {
   color: var(--gray-100);
+}
+
+.taskDone {
+  color: var(--gray-400);
+  text-decoration: line-through;
+}
+
+.deleteTask {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: var(--gray-400);
+  line-height: 0;
+  
+  cursor: pointer;
+  transition: color 0.1s;
+}
+
+.deleteTask:hover{
+  color: var(--red-500);
 }

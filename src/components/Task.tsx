@@ -17,10 +17,20 @@ export function Task() {
           className={ checkButton ? styles.buttonChecked : styles.button }
           onClick={handleCheckButton}
         >
-          <span>{ checkButton ? <Check /> : ''}</span>
+          <span>{ checkButton ? <Check size={ 18 }/> : ''}</span>
         </button>        
-        <span>lorem psumdasd dasdas dasd asdas a dasdasda  leor iasls orosla opror kokok odansjnd jdpqp aspdj pa dapsjdp jaddj</span>
-        <button>{ <Trash /> }</button>
+        <span 
+          className={checkButton ? styles.taskDone : styles.taskInProgress}
+        >
+          lorem psumdasd dasdas dasd asdas a dasdasda  leor iasls orosla 
+          opror kokok odansjnd jdpqp aspdj pa dapsjdp jaddj
+        </span>
+        <button 
+          className={styles.deleteTask}
+          title="Task Delete"
+        >
+          <Trash size={ 24 }/>
+        </button>
       </li>
     </ul>
   )
