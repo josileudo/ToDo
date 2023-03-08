@@ -4,6 +4,7 @@ import { NewTask } from './components/newTask';
 import styles from './App.module.css';
 import './global.css';
 import { TaskProgress } from './components/taskProgress';
+import { Task } from './components/Task';
 
 export function App() {
   return (
@@ -13,17 +14,10 @@ export function App() {
         <NewTask />
         <article>
           <TaskProgress />
-          <div>
-            <div>
-              <input
-                type="checkbox"
-              >                
-              </input>
-              <span>lorem psum leor iasls orosla opror</span>
-              <button>
-                Delete
-              </button>
-            </div>
+          <div className={ styles.Tasks }>
+            <Task />
+            <Task />
+            <Task />
           </div>
         </article>
       </div>

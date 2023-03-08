@@ -1,0 +1,66 @@
+.task {
+  background: var(--gray-600);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.task + .task {
+  margin-top: 0.75rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 0.75rem;
+}
+
+.wrapper > button[type="button"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  outline: none;
+
+  border-radius: 50%;
+  transition: all 0.2s;
+} 
+
+.wrapper > button[type="button"] > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.button {
+  background: transparent;
+  border: 3px solid var(--blue-500);
+}
+
+.button:hover {
+  border: 3px solid var(--blue-600);
+}
+
+.buttonChecked {
+  border: none;
+  background: var(--purple-600);
+  color: var(--gray-100);
+}
+
+.buttonChecked:hover {
+  background: var(--purple-500);
+}
+
+.wrapper > span {
+  width: 100%;
+  line-height: 1.4;
+  font-weight: 400;
+
+  display: flex;
+  align-items: flex-start;
+
+  color: var(--gray-100);
+}

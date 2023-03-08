@@ -12,6 +12,10 @@
   margin-top: 4rem;
 }
 
+.Tasks {
+  margin-top: 1.5rem;
+}
+
 @media(max-width: 720px) {
   html {
     font-size: 87.5%;
