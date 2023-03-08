@@ -1,8 +1,9 @@
-import { Check, CheckCircle, Trash } from 'phosphor-react'
+import { Check, Trash } from 'phosphor-react'
 import { useState } from 'react'
+import { TaskProps } from '../App';
 import styles from './Task.module.css'
 
-export function Task() {
+export function Task(content: TaskProps) {
   const [checkButton, setCheckButton] = useState(false);
 
   function handleCheckButton() {
@@ -22,8 +23,7 @@ export function Task() {
         <span 
           className={checkButton ? styles.taskDone : styles.taskInProgress}
         >
-          lorem psumdasd dasdas dasd asdas a dasdasda  leor iasls orosla 
-          opror kokok odansjnd jdpqp aspdj pa dapsjdp jaddj
+          {content.content.text}
         </span>
         <button 
           className={styles.deleteTask}
