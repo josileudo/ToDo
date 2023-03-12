@@ -1,29 +1,37 @@
 import { Check, Trash } from 'phosphor-react'
 import { useState } from 'react'
-import { TaskProps } from '../App';
+import { ContentPreview, TaskProps } from '../App';
 import styles from './Task.module.css'
 
-export function Task(content: TaskProps) {
-  const [checkButton, setCheckButton] = useState(false);
+export function Task({ content }: TaskProps) {
+  const [tasks, setTasks] = useState([content]);
+
+  console.log("***", tasks)
 
   function handleCheckButton() {
-    setCheckButton(!checkButton);
+    
+    setTasks(
+      tasks.map(task => {
+        task.state = !task.state
+        return task
+      })
+    )
   }
-
+  
   return(
     <ul className={ styles.task }>
       <li className={ styles.wrapper }>        
         <button 
           type="button"
-          className={ checkButton ? styles.buttonChecked : styles.button }
+          className={ content.state ? styles.buttonChecked : styles.button }
           onClick={handleCheckButton}
         >
-          <span>{ checkButton ? <Check size={ 18 }/> : ''}</span>
+          <span>{ content.state ? <Check size={ 18 }/> : ''}</span>
         </button>        
         <span 
-          className={checkButton ? styles.taskDone : styles.taskInProgress}
+          className={content.state ? styles.taskDone : styles.taskInProgress}
         >
-          {content.content.text}
+          { content.text }
         </span>
         <button 
           className={styles.deleteTask}

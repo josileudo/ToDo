@@ -6,7 +6,7 @@ import './global.css';
 import { TaskProgress } from './components/taskProgress';
 import { Task } from './components/Task';
 
-interface ContentPreview {
+export interface ContentPreview {
   state: boolean;
   text: string
 }
