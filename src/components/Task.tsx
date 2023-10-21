@@ -5,11 +5,8 @@ import styles from './Task.module.css'
 
 export function Task({ content }: TaskProps) {
   const [tasks, setTasks] = useState([content]);
-
-  console.log("***", tasks)
-
-  function handleCheckButton() {
-    
+  
+  function handleCheckButton() {    
     setTasks(
       tasks.map(task => {
         task.state = !task.state

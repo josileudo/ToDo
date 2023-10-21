@@ -5,6 +5,7 @@ import styles from './App.module.css';
 import './global.css';
 import { TaskProgress } from './components/taskProgress';
 import { Task } from './components/Task';
+import { useState } from 'react';
 
 export interface ContentPreview {
   state: boolean;
@@ -15,7 +16,7 @@ export interface TaskProps {
   content: ContentPreview
 }
 
-const task: TaskProps[] = [
+const taskMock: TaskProps[] = [
   {
     id: 1,
     content: {
@@ -54,11 +55,18 @@ const task: TaskProps[] = [
 ]
 
 export function App() {
+  const [task, setTask] = useState<TaskProps[]>(taskMock)
+  const [newTask, setNewTask] = useState<TaskProps>()
+
+  function createNewTask(taskProp: TaskProps) {
+    setTask([...task, taskProp])
+  }
+
   return (
     <div>
       <Header />
       <div className={ styles.wrapper }>
-        <NewTask />
+        <NewTask onCreateNewTask={createNewTask} />
         <section>
           <TaskProgress />
           <div className={ styles.Tasks }>
