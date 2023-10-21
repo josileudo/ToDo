@@ -58,8 +58,12 @@ export function App() {
   const [task, setTask] = useState<TaskProps[]>(taskMock)
   const [newTask, setNewTask] = useState<TaskProps>()
 
-  function createNewTask(taskProp: TaskProps) {
-    setTask([...task, taskProp])
+  function createNewTask(taskProp: string) {
+    const taskContent: TaskProps = {
+      id: task.length + 1,
+      content: {state: false, text: taskProp}
+    }
+    setTask([...task, taskContent])
   }
 
   return (

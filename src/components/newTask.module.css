@@ -40,6 +40,11 @@
   transition: background 0.2s; 
 }
 
-.taskForm button[type='submit']:hover {
+.taskForm button[type='submit']:not(:disabled):hover {
   background: var(--blue-500);
+}
+
+.taskForm button[type='submit']:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
