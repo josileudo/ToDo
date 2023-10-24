@@ -9,79 +9,79 @@ import { useState } from 'react';
 
 export interface ContentPreview {
   state: boolean;
-  text: string
+  text: string;
 }
 export interface TaskProps {
-  id?: number;
-  content: ContentPreview
+  id: number;
+  content: ContentPreview;
 }
 
 const taskMock: TaskProps[] = [
   {
     id: 1,
     content: {
-      state: false,
-      text: 'Criar componente de texto'
-    }
-  },
-  {
-    id: 2,
-    content: {
-      state: false,
-      text: 'Ler a bíblia'
-    }
-  },
-  {
-    id: 3,
-    content: {
-      state: false,
-      text: 'Mandar mensagem para o João dev'
-    }
-  },
-  {
-    id: 4,
-    content: {
       state: true,
-      text: 'Salvar arquivo'
-    }
+      text: 'Criar componente de texto',
+    },
   },
-  {
-    id: 5,
-    content: {
-      state: true,
-      text: 'Enviar email para o cliente'
-    }
-  }
-]
+];
 
 export function App() {
-  const [task, setTask] = useState<TaskProps[]>(taskMock)
-  const [newTask, setNewTask] = useState<TaskProps>()
+  const [task, setTask] = useState<TaskProps[]>(taskMock);
+  const [newTask, setNewTask] = useState<TaskProps>();
 
+  let totalTaskDone = 0;
   function createNewTask(taskProp: string) {
     const taskContent: TaskProps = {
       id: task.length + 1,
-      content: {state: false, text: taskProp}
-    }
-    setTask([...task, taskContent])
+      content: { state: false, text: taskProp },
+    };
+
+    setTask([...task, taskContent]);
   }
+
+  function handleCheckedTask(id: number) {
+    const isDone = task.filter((t) => t.content.state === true);
+    console.log(isDone.length);
+    task.map((val) => {
+      if (val.content.state) console.log(task.length);
+    });
+
+    console.log(id);
+  }
+
+  function checkTotalTaskDone() {
+    // const isDone = task.filter((t) => t.content.state === true);
+    // console.log(isDone.length);
+    // task.map((val) => {
+    //   if (val.content.state) console.log(task.length);
+    // });
+  }
+
+  console.log(task);
+
+  checkTotalTaskDone();
 
   return (
     <div>
       <Header />
-      <div className={ styles.wrapper }>
+      <div className={styles.wrapper}>
         <NewTask onCreateNewTask={createNewTask} />
         <section>
-          <TaskProgress />
-          <div className={ styles.Tasks }>
+          <TaskProgress totalTask={task.length} totalTaskDone={totalTaskDone} />
+          <div className={styles.Tasks}>
             {task.map((task: TaskProps) => {
-             return (
-              <Task key={task.id} content={task.content}/>
-             )
+              return (
+                <Task
+                  key={task.id}
+                  task={task}
+                  onCheckedTask={handleCheckedTask}
+                />
+              );
             })}
           </div>
         </section>
       </div>
     </div>
-  )
+  );
 }
